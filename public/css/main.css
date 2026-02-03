@@ -1,0 +1,355 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content {
+    min-height: calc(100vh - 60px);
+}
+
+
+/*HOME PAGE*/
+/* Hero background */
+.home-hero {
+    min-height: calc(100vh - 60px); /* minus navbar */
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Content */
+.hero-content {
+    max-width: 700px;
+    color: #ffffff;
+}
+
+/* Main title */
+.hero-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Subtitle */
+.hero-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+/* Button (semi transparan) */
+.hero-button {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    transition: all 0.25s ease;
+}
+
+.hero-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/*====================================*/
+
+/*LIST ASPIRASI*?
+/* Container */
+.container-list {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Title */
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+/* List wrapper */
+.list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Card */
+.list-card {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 16px 18px;
+}
+
+/* Name */
+.list-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+/* Description */
+.list-desc {
+    font-size: 14px;
+    color: #1f2937;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+/* Footer */
+.list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.list-date {
+    color: #374151;
+}
+
+/* Detail link */
+.list-detail {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.list-detail:hover {
+    text-decoration: underline;
+}
+
+/* Empty */
+.empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 30px 0;
+}
+
+/* Bottom button */
+.bottom-action {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.btn-add-center {
+    display: inline-block;
+    background: #3b82f6;
+    color: #ffffff;
+    padding: 10px 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-back-home {
+    display: inline-block;
+    background: #6b7280;
+    color: #ffffff;
+    padding: 10px 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-add-center:hover {
+    background: #2563eb;
+}
+/*====================================*/
+
+
+/* DETAIL */
+.container-detail {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Status text */
+.status-text {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.status-selesai {
+    color: #16a34a;
+}
+
+.status-menunggu {
+    color: #ca8a04;
+}
+
+/* Card */
+.detail-card {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Title */
+.detail-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+/* Description */
+.detail-desc {
+    font-size: 14px;
+    color: #1f2937;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Meta info */
+.detail-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #374151;
+}
+
+/* Feedback sender */
+.detail-from {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #374151;
+}
+
+/* Back button */
+.btn-back  {
+    margin-left: 400px;
+    display: inline-block;
+    background: #3b82f6;
+    color: #ffffff;
+    padding: 10px 26px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-back:hover {
+    background: #2563eb;
+}
+/*====================================*/
+
+/* CREATE */
+/* Container */
+.form-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Form */
+.aspirasi-form {
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+/* Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label */
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+/* Input & Select */
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* Textarea */
+.form-textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    resize: vertical;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* Action buttons */
+.form-action-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* Buttons */
+.btn-cancel {
+    background: #d1d5db;
+    color: #111827;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    background: #9ca3af;
+}
+
+.btn-submit {
+    background: #3b82f6;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #2563eb;
+}
+/*====================================*/
