@@ -32,5 +32,31 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Berhasil logout!');
     }
+    public function adminlogin()
+    {   
+        return view('Admin.login');
+    }
+
+    public function adminloginpost(Request $request)
+    {
+       
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/Admin')->with('success', 'Berhasil login!');
+        }
+        return back()->with('error', 'Username atau password salah')->onlyInput('Username');
+    }
+
+     public function adminlogout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login')->with('success', 'Berhasil logout!');
+    }
 
 }

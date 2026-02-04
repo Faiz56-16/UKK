@@ -4,6 +4,7 @@ use App\Http\Controllers\AspirasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/aspirasi/create', [AspirasiController::class, 'store'])->name('aspirasi.store');
     Route::get('/aspirasi/{id_pelaporan}', [AspirasiController::class, 'show'])->name('aspirasi.show');
 });
+
+Route::get('/Admin', [AuthController::class, 'adminlogin'])->name('admin.login');
+Route::post('/Admin-Login', [AuthController::class, 'adminloginpost'])->name('admin.loginpost');

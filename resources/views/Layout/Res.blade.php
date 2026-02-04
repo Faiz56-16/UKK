@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/footer.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -17,8 +18,7 @@
         </div>      
         <form method="POST" action="{{ route('aspirasi.logout') }}">
             @csrf
-            <button type="submit" class="dropdown-item">
-                <i class="bx bx-power-off me-2"></i>
+            <button type="submit" class="button-logout">
                 <span class="align-middle">Log out</span>
             </button>
         </form>
@@ -28,6 +28,14 @@
     <main class="main-content">
         @yield('content')
     </main>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>&copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong>. Hak Cipta Dilindungi.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 
