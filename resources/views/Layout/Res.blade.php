@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
@@ -10,11 +11,18 @@
 
 <body class="bg-gray-100">
 
-<nav class="navbar">
-    <div class="navbar-brand">
-        <a href="{{ route('aspirasi.index') }}">Aspirasi</a>
-    </div>  
-</nav>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="{{ route('aspirasi.index') }}">Aspirasi</a>
+        </div>      
+        <form method="POST" action="{{ route('aspirasi.logout') }}">
+            @csrf
+            <button type="submit" class="dropdown-item">
+                <i class="bx bx-power-off me-2"></i>
+                <span class="align-middle">Log out</span>
+            </button>
+        </form>
+    </nav>
 
 
     <main class="main-content">
@@ -22,4 +30,5 @@
     </main>
 
 </body>
+
 </html>
