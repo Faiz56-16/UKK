@@ -10,8 +10,13 @@ class AspirasiController extends Controller
 {
     public function index()
     {
-       $aspirasi = Aspirasi::all();
+        $aspirasi = Aspirasi::all();
         return view('Aspirasi/index', compact('aspirasi'));
+    }
+    public function adminaspirasi()
+    {
+        $aspirasi = Aspirasi::all();
+        return view('Admin/listaspirasi', compact('aspirasi'));
     }
     public function create()
     {
@@ -21,9 +26,9 @@ class AspirasiController extends Controller
     }
     public function store(Request $request)
     {
-       
+
         $validatedData = $request->validate([
-            'id_kategori' => 'required|exists:kategori,id_kategori', 
+            'id_kategori' => 'required|exists:kategori,id_kategori',
             'keterangan'  => 'required|max:255',
             'lokasi'      => 'required',
         ]);
@@ -36,9 +41,7 @@ class AspirasiController extends Controller
     public function show($id_pelaporan)
     {
 
-            $aspirasi = Aspirasi::find($id_pelaporan);
-            return view('Aspirasi/detail', compact('aspirasi'));          
+        $aspirasi = Aspirasi::find($id_pelaporan);
+        return view('Aspirasi/detail', compact('aspirasi'));
     }
-    
 }
-

@@ -15,9 +15,8 @@ class Kategori extends Model
         'ket_kategori',
     ];
 
-  public function aspirasi()
-{
-
-    return $this->hasMany(Aspirasi::class, 'id_kategori', 'id_kategori');
-}
+    public function aspirasi()
+    {
+        return $this->hasMany(Aspirasi::class, 'id_kategori', 'id_kategori');
+    }
 }

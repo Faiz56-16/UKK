@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\UmpanBalikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +35,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/aspirasi/{id_pelaporan}', [AspirasiController::class, 'show'])->name('aspirasi.show');
 });
 
-Route::get('/Admin', [AuthController::class, 'adminlogin'])->name('admin.login');
-Route::post('/Admin-Login', [AuthController::class, 'adminloginpost'])->name('admin.loginpost');
+    Route::get('/feedback/{aspirasi}', [UmpanBalikController::class, 'feedback'])->name('aspirasi.feedback');
+    Route::post('/feedback-tambah/{id_pelaporan}', [UmpanBalikController::class, 'feedbackstore'])->name('admin.feedbackstore');
+// Route::Middleware([['auth:admin']])->group(function () {
+    Route::get('/Admin', [AuthController::class, 'adminlogin'])->name('admin.login');
+    Route::post('/Admin-Login', [AuthController::class, 'adminloginpost'])->name('admin.loginpost');
+    Route::post('/Admin-Logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
+
+    Route::get('/Dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/Manage-Aspirasi', [AspirasiController::class, 'adminaspirasi'])->name('admin.aspirasi');
+// });

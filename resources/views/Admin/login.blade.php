@@ -16,6 +16,8 @@
             </div>
 
             <button type="submit" class="btn-login">Login</button>
+            <a href="{{ route('login') }}">Login Sebagai Siswa</a>
+    
         </form>
     </div>
 </div>

@@ -16,6 +16,7 @@
             </div>
 
             <button type="submit" class="btn-login">Login</button>
+            <a href="{{ route('admin.login') }}">Login Sebagai Admin</a>
         </form>
     </div>
 </div>

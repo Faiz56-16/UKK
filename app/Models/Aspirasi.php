@@ -9,7 +9,7 @@ class Aspirasi extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_pelaporan'; 
+    protected $primaryKey = 'id_pelaporan';
     protected $table = 'aspirasi';
     protected $fillable = [
         'nis',
@@ -17,9 +17,13 @@ class Aspirasi extends Model
         'lokasi',
         'id_kategori'
     ];
-   
-public function kategori()
-{
-    return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
-}
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+    }
+     public function umpanbalik()
+    {
+        return $this->hasOne(umpanbalik::class, 'id_pelaporan', 'id_pelaporan');
+    }
 }
