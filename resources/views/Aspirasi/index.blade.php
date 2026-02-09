@@ -9,7 +9,7 @@
         <div class="list-card">
 
             <h3 class="list-name">
-                {{ $as->nis }}
+                {{ $as->siswa->nama ?? 'Siswa' }}
             </h3>
 
             <p class="list-desc">

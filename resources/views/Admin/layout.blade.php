@@ -12,45 +12,43 @@
 </head>
 
 <body>
-    <div class="container">
-    
-        {{-- Sidebar --}}
-        <aside class="sidebar">
-            <h2 class="logo">Admin</h2>
+<div class="container-fluid">
+    <div class="row min-vh-100">
 
-            <nav class="menu">
+        <!-- Sidebar -->
+        <aside class="col-12 col-md-3 col-lg-2 bg-primary text-white p-3">
+            <h4 class="text-center mb-4">Admin</h4>
+
+            <div class="d-grid gap-2">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                   class="btn btn-light {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     Dashboard
                 </a>
 
                 <a href="{{ route('admin.aspirasi') }}"
-                    class="{{ request()->routeIs('admin.aspirasi') ? 'active' : '' }}">
+                   class="btn btn-light {{ request()->routeIs('admin.aspirasi') ? 'active' : '' }}">
                     Data Aspirasi
                 </a>
 
                 <form method="POST" action="{{ route('aspirasi.logout') }}">
                     @csrf
-                    <button type="submit" class="button-logout">
+                    <button type="submit" class="btn btn-success mt-3">
                         Log out
                     </button>
                 </form>
-            </nav>
+            </div>
         </aside>
 
-        {{-- Content --}}
-        <main class="content">
-            <header class="navbar">
-                <h1 class="page-title">
-                    @yield('page-title', 'Dashboard')
-                </h1>
-            </header>
+        <!-- Content -->
+        <main class="col-12 col-md-9 col-lg-10 p-4 bg-light">
+            <h1 class="mb-4">@yield('page-title', 'Dashboard')</h1>
 
             @yield('content')
-            
         </main>
 
     </div>
+</div>
 </body>
+
 
 </html>

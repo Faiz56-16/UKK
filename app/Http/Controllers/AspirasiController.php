@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aspirasi;
 use App\Models\Kategori;
+use App\Models\umpanbalik;
 use Illuminate\Http\Request;
 
 class AspirasiController extends Controller
@@ -13,6 +14,21 @@ class AspirasiController extends Controller
         $aspirasi = Aspirasi::all();
         return view('Aspirasi/index', compact('aspirasi'));
     }
+
+  public function filter(Request $request)
+    {
+        $query = Aspirasi::query();
+
+        // Filter search keyword di kolom 'name'
+        if ($request->search) {
+            $query->where('name', 'like', '%'.$request->search.'%');
+        }
+
+        $users = $query->get();
+
+        return view('users.index', compact('users'));
+    }
+
     public function adminaspirasi()
     {
         $aspirasi = Aspirasi::all();
@@ -26,14 +42,19 @@ class AspirasiController extends Controller
     }
     public function store(Request $request)
     {
-
-        $validatedData = $request->validate([
+     
+        $request->validate([
             'id_kategori' => 'required|exists:kategori,id_kategori',
             'keterangan'  => 'required|max:255',
             'lokasi'      => 'required',
         ]);
 
-        Aspirasi::create($validatedData);
+        Aspirasi::create([
+            'nis'         => auth()->user()->nis,
+            'id_kategori' => $request->id_kategori,
+            'keterangan'  => $request->keterangan,
+            'lokasi'      => $request->lokasi,
+        ]);
 
         return redirect()->route('aspirasi.index')->with('success', 'Aspirasi submitted successfully!');
     }

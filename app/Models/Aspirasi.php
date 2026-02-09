@@ -26,4 +26,9 @@ class Aspirasi extends Model
     {
         return $this->hasOne(umpanbalik::class, 'id_pelaporan', 'id_pelaporan');
     }
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'nis', 'nis');
+    }
 }

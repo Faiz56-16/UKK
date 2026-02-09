@@ -19,4 +19,9 @@ class Siswa extends Authenticatable
         'password',
         'kelas',
     ];
+
+    public function aspirasi()
+    {
+        return $this->hasMany(Aspirasi::class, 'nis', 'nis');
+    }
 }

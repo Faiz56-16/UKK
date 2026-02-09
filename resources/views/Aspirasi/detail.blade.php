@@ -4,12 +4,12 @@
 <div class="container-detail">
 
     <div class="status-text status-selesai">
-        Status: {{ ucfirst($aspirasi->status) }}
+        Status: {{ $aspirasi->umpanbalik->status ?? 'Belum diproses' }}
     </div>
 
     <div class="detail-card">
         <h3 class="detail-title">
-            {{ $aspirasi->nama_pelapor ?? 'Siswa' }}
+            {{ $aspirasi->siswa->nama ?? 'Siswa' }}
         </h3>
 
         <p class="detail-desc">
@@ -22,19 +22,27 @@
         </div>
     </div>
 
-    @if($aspirasi->feedback)
+</div>
+
+
+@if($aspirasi->umpanbalik)
+<div class="container-detail">
+    <h3 class="detail-title">Feedback</h3>
+    <div class="status-text status-selesai">
+        Rating : Bintang {{ $aspirasi->umpanbalik->feedback }}
+    </div>
+
     <div class="detail-card">
-        <h3 class="detail-title">Feedback</h3>
+        <h3 class="detail-title">
+            Admin
+        </h3>
 
         <p class="detail-desc">
-            {{ $aspirasi->feedback->isi_feedback }}
-        </p>
-
-        <p class="detail-from">
-            Dari: {{ $aspirasi->feedback->admin->nama ?? 'Admin Sekolah' }}
+            {{ $aspirasi->umpanbalik->komentar }}
         </p>
     </div>
     @endif
+
 
     <a href="{{ route('aspirasi.index') }}" class="btn-back"> Kembali</a>
 
