@@ -2,24 +2,31 @@
 
 @section('content')
 <h1>Data Siswa</h1>
-<form action="{{ url('users') }}" method="GET">
-    <label for="role">Role:</label>
-    <select name="role" id="role">
-        <option value="">--All--</option>
-        <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-        <option value="editor" {{ request('role') == 'editor' ? 'selected' : '' }}>Editor</option>
-        <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User</option>
+<form method="GET" action="{{ route('admin.aspirasi') }}">
+
+    <select name="kategori" onchange="this.form.submit()">
+        <option value="">-- Semua Kategori --</option>
+
+        @foreach ($kategori as $kat)
+        <option value="{{ $kat->id_kategori }}"
+            {{ request('kategori') == $kat->id_kategori ? 'selected' : '' }}>
+            {{ $kat->ket_kategori }}
+        </option>
+        @endforeach
     </select>
 
-    <label for="status">Status:</label>
-    <select name="status" id="status">
-        <option value="">--All--</option>
-        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
-        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+    <select name="status">
+        <option value="">-- Semua Status --</option>
+        <option value="Selesai" {{ request('status') == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+        <option value="Menunggu" {{ request('status') == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
     </select>
+
+     <input type="date" name="tanggal" value="{{ request('tanggal') }}">
 
     <button type="submit">Filter</button>
-    <a href="{{ url('users') }}"><button type="button">Reset</button></a>
+    <a href="{{ route(name: 'admin.aspirasi') }}">
+        Reset
+    </a>
 </form>
 
 <table class="table table-striped table-bordered table-hover align-middle">

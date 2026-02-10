@@ -11,28 +11,38 @@ class AspirasiController extends Controller
 {
     public function index()
     {
+
         $aspirasi = Aspirasi::all();
         return view('Aspirasi/index', compact('aspirasi'));
     }
 
-  public function filter(Request $request)
-    {
-        $query = Aspirasi::query();
 
-        // Filter search keyword di kolom 'name'
-        if ($request->search) {
-            $query->where('name', 'like', '%'.$request->search.'%');
+    public function adminaspirasi(Request $request)
+    {
+        $kategori = Kategori::all();
+        // 1. Ambil SEMUA data dulu
+        $query = Aspirasi::with(['kategori', 'umpanbalik']);
+
+        // 2. Kalau ADA status → baru filter
+        if ($request->filled('status')) {
+            $query->whereHas('umpanbalik', function ($q) use ($request) {
+                $q->where('status', $request->status);
+            });
         }
 
-        $users = $query->get();
+        if ($request->filled('kategori')) {
+            $query->where('id_kategori', $request->kategori);
+        }
 
-        return view('users.index', compact('users'));
-    }
+        // FILTER TANGGAL (created_at)
+        if ($request->filled('tanggal')) {
+            $query->whereDate('created_at', $request->tanggal);
+        }
 
-    public function adminaspirasi()
-    {
-        $aspirasi = Aspirasi::all();
-        return view('Admin/listaspirasi', compact('aspirasi'));
+
+        // 3. Eksekusi query
+        $aspirasi = $query->get();
+        return view('Admin/listaspirasi', compact('aspirasi', 'kategori'));
     }
     public function create()
     {
@@ -42,7 +52,7 @@ class AspirasiController extends Controller
     }
     public function store(Request $request)
     {
-     
+
         $request->validate([
             'id_kategori' => 'required|exists:kategori,id_kategori',
             'keterangan'  => 'required|max:255',

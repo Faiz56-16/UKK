@@ -27,7 +27,16 @@ Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('aspirasi.loginpost');
 Route::post('/logout', [AuthController::class, 'logout'])->name('aspirasi.logout');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware('web')->group(function () {
+    Route::get('/Admin', [AuthController::class, 'adminlogin'])->name('admin.login');
+    Route::post('/Admin-Login', [AuthController::class, 'adminloginpost'])->name('admin.loginpost');
+});
+
+
+Route::post('/Admin-Logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
+
+
+Route::middleware(['auth:siswa'])->group(function () {
     Route::get('/Home', [HomeController::class, 'index'])->name('home');
     Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
     Route::get('/aspirasi/tambah', [AspirasiController::class, 'create'])->name('aspirasi.create');
@@ -35,13 +44,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/aspirasi/{id_pelaporan}', [AspirasiController::class, 'show'])->name('aspirasi.show');
 });
 
+Route::middleware(['web', 'auth:admin'])->group(function () {
     Route::get('/feedback/{aspirasi}', [UmpanBalikController::class, 'feedback'])->name('aspirasi.feedback');
     Route::post('/feedback-tambah/{id_pelaporan}', [UmpanBalikController::class, 'feedbackstore'])->name('admin.feedbackstore');
-// Route::Middleware([['auth:admin']])->group(function () {
-    Route::get('/Admin', [AuthController::class, 'adminlogin'])->name('admin.login');
-    Route::post('/Admin-Login', [AuthController::class, 'adminloginpost'])->name('admin.loginpost');
-    Route::post('/Admin-Logout', [AuthController::class, 'adminlogout'])->name('admin.logout');
 
     Route::get('/Dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/Manage-Aspirasi', [AspirasiController::class, 'adminaspirasi'])->name('admin.aspirasi');
-// });
+    Route::get('/Manage-Kategori', [AspirasiController::class, 'adminkategori'])->name('admin.kategori');
+});

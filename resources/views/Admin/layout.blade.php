@@ -29,6 +29,10 @@
                    class="btn btn-light {{ request()->routeIs('admin.aspirasi') ? 'active' : '' }}">
                     Data Aspirasi
                 </a>
+                <a href="{{ route('admin.kategori') }}"
+                   class="btn btn-light {{ request()->routeIs('admin.kategori') ? 'active' : '' }}">
+                    Data Kategori
+                </a>
 
                 <form method="POST" action="{{ route('aspirasi.logout') }}">
                     @csrf
