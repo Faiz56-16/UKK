@@ -15,6 +15,8 @@ class Kategori extends Model
         'ket_kategori',
     ];
 
+    public $timestamps = false;
+
     public function aspirasi()
     {
         return $this->hasMany(Aspirasi::class, 'id_kategori', 'id_kategori');

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UmpanBalikController;
 
 /*
@@ -50,5 +51,8 @@ Route::middleware(['web', 'auth:admin'])->group(function () {
 
     Route::get('/Dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/Manage-Aspirasi', [AspirasiController::class, 'adminaspirasi'])->name('admin.aspirasi');
-    Route::get('/Manage-Kategori', [AspirasiController::class, 'adminkategori'])->name('admin.kategori');
+    Route::get('/Manage-Kategori', [KategoriController::class, 'adminkategori'])->name('admin.kategori');
+    Route::get('/Tambah-kategori', [KategoriController::class, 'tambahkategori'])->name('kategori.tambah');
+    Route::post('/Tambah-kategori', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::delete('/hapus-kategori/{id_kategori}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 });
